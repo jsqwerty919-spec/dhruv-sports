@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Cricket Pro Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🏏</span>
+                Cricket Pro Shop
+            </a>
+            <nav class="main-nav">
+                <a href="index.html#catalog">Shop</a>
+                <div class="nav-dropdown">
+                    <button class="dropdown-toggle" type="button" aria-expanded="false">Products</button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-column">
+                            <h4 class="dropdown-title">Categories</h4>
+                            <div class="dropdown-links">
+                                <a href="index.html#catalog" data-filter-category="all">All Gear</a>
+                                <a href="index.html#catalog" data-filter-category="bats">Bats</a>
+                                <a href="index.html#catalog" data-filter-category="balls">Balls</a>
+                                <a href="index.html#catalog" data-filter-category="gloves">Gloves</a>
+                                <a href="index.html#catalog" data-filter-category="legguards">Leg Guards</a>
+                                <a href="index.html#catalog" data-filter-category="clothing">Clothing</a>
+                                <a href="index.html#catalog" data-filter-category="helmets">Helmets</a>
+                                <a href="index.html#catalog" data-filter-category="shoes">Shoes</a>
+                                <a href="index.html#catalog" data-filter-category="accessories">Accessories</a>
+                                <a href="index.html#catalog" data-filter-category="kits">Kits</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-column">
+                            <h4 class="dropdown-title">Featured Gear</h4>
+                            <div class="dropdown-links" data-dropdown-products>
+                                <!-- populated via script -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="index.html#why-us">Why Us</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="profile.html">Profile</a>
+            </nav>
+            <button class="cart-toggle" id="cartToggle" aria-expanded="false" aria-controls="cartPanel">
+                Cart <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="offer-carousel" aria-label="Seasonal offers">
+        <div class="container offer-wrapper">
+            <button class="offer-nav prev" id="offerPrev" aria-label="Previous offer">‹</button>
+            <div class="offer-window">
+                <div class="offer-track" id="offerTrack">
+                    <!-- Offers rendered here -->
+                </div>
+            </div>
+            <button class="offer-nav next" id="offerNext" aria-label="Next offer">›</button>
+        </div>
+    </section>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Checkout</h1>
+                <p>Complete your order in a few quick steps and get ready to play your best innings.</p>
+            </div>
+        </section>
+
+        <section class="checkout">
+            <div class="container checkout-layout">
+                <form id="checkoutForm" class="card checkout-form">
+                    <div class="section-header">
+                        <h2>Contact Details</h2>
+                        <p>We’ll send your receipt and match-day updates here.</p>
+                    </div>
+                    <div class="input-grid">
+                        <label>
+                            Full Name
+                            <input type="text" name="fullName" placeholder="Virat Kohli" required>
+                        </label>
+                        <label>
+                            Email
+                            <input type="email" name="email" placeholder="you@example.com" required>
+                        </label>
+                        <label>
+                            Phone Number
+                            <input type="tel" name="phone" placeholder="+91 98765 43210" required>
+                        </label>
+                    </div>
+
+                    <div class="section-header">
+                        <h2>Shipping Address</h2>
+                        <p>Delivering anywhere across India. Ensure your address is accurate.</p>
+                    </div>
+                    <div class="input-grid">
+                        <label class="full-width">
+                            Street Address
+                            <input type="text" name="address" placeholder="22 Stadium Road" required>
+                        </label>
+                        <label>
+                            City
+                            <input type="text" name="city" placeholder="Gurugram" required>
+                        </label>
+                        <label>
+                            State
+                            <input type="text" name="state" placeholder="Haryana" required>
+                        </label>
+                        <label>
+                            Postal Code
+                            <input type="text" name="postalCode" placeholder="122001" required>
+                        </label>
+                    </div>
+
+                    <div class="section-header">
+                        <h2>Payment</h2>
+                        <p>Secure payment powered by trusted gateways.</p>
+                    </div>
+                    <div class="payment-options">
+                        <label class="radio-card">
+                            <input type="radio" name="paymentMethod" value="upi" checked>
+                            <span>UPI / QR</span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="paymentMethod" value="card">
+                            <span>Credit / Debit Card</span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="paymentMethod" value="cod">
+                            <span>Cash on Delivery</span>
+                        </label>
+                    </div>
+                    <div class="input-grid card-details">
+                        <label>
+                            Card Number
+                            <input type="text" name="cardNumber" placeholder="1234 5678 9012 3456">
+                        </label>
+                        <label>
+                            Expiry
+                            <input type="text" name="cardExpiry" placeholder="MM/YY">
+                        </label>
+                        <label>
+                            CVV
+                            <input type="password" name="cardCvv" placeholder="***">
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn primary full-width">Place Order Securely</button>
+                </form>
+
+                <aside class="card checkout-summary">
+                    <div class="section-header">
+                        <h2>Order Summary</h2>
+                        <p>Review your gear before you place the order.</p>
+                    </div>
+                    <div id="checkoutEmpty" class="empty-state">
+                        <p>Your cart is empty. <a href="index.html#catalog">Browse cricket gear</a>.</p>
+                    </div>
+                    <ul class="summary-list" id="orderSummaryList"></ul>
+                    <div class="summary-totals">
+                        <div><span>Subtotal</span><span id="orderSubtotal">₹0</span></div>
+                        <div><span>Shipping</span><span id="orderShipping">₹0</span></div>
+                        <div class="summary-grand"><span>Total</span><span id="orderTotal">₹0</span></div>
+                    </div>
+                    <p class="summary-note">Shipping is free on orders above ₹7,500. Secure payments with encrypted checkout.</p>
+                </aside>
+            </div>
+        </section>
+
+        <section id="checkoutSuccess" class="checkout-success card" hidden>
+            <div class="container success-content">
+                <h2>Order Confirmed!</h2>
+                <p>Your order <strong data-order-id></strong> is locked in and our team is prepping your kit.</p>
+                <div class="success-actions">
+                    <a class="btn primary" href="index.html">Continue Shopping</a>
+                    <a class="btn secondary" href="profile.html">View Order History</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <aside class="cart-panel" id="cartPanel" aria-hidden="true">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="cart-close" id="cartClose" aria-label="Close cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="cart-empty">Your cart is empty. Add some cricket gear!</p>
+        </div>
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">₹0</span>
+            </div>
+            <button class="btn primary full-width" id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </aside>
+
+    <footer class="site-footer" id="contact">
+        <div class="container footer-grid">
+            <div>
+                <h3>Cricket Pro Shop</h3>
+                <p>Everything you need for the perfect innings. Powered by passion for the game.</p>
+            </div>
+            <div>
+                <h4>Visit Us</h4>
+                <p>22 Stadium Road<br>Gurugram, India</p>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>support@cricketproshop.com<br>+91 98765 43210</p>
+            </div>
+            <div>
+                <h4>Follow</h4>
+                <p>
+                    <a href="#">Instagram</a> ·
+                    <a href="#">YouTube</a> ·
+                    <a href="#">Facebook</a>
+                </p>
+            </div>
+        </div>
+        <p class="footer-note">&copy; <span id="currentYear"></span> Cricket Pro Shop. All rights reserved.</p>
+    </footer>
+
+    <div class="backdrop" id="backdrop" hidden></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

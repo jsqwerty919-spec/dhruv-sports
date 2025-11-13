@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Cricket Pro Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🏏</span>
+                Cricket Pro Shop
+            </a>
+            <nav class="main-nav">
+                <a href="index.html#catalog">Shop</a>
+                <div class="nav-dropdown">
+                    <button class="dropdown-toggle" type="button" aria-expanded="false">Products</button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-column">
+                            <h4 class="dropdown-title">Categories</h4>
+                            <div class="dropdown-links">
+                                <a href="index.html#catalog" data-filter-category="all">All Gear</a>
+                                <a href="index.html#catalog" data-filter-category="bats">Bats</a>
+                                <a href="index.html#catalog" data-filter-category="balls">Balls</a>
+                                <a href="index.html#catalog" data-filter-category="gloves">Gloves</a>
+                                <a href="index.html#catalog" data-filter-category="legguards">Leg Guards</a>
+                                <a href="index.html#catalog" data-filter-category="clothing">Clothing</a>
+                                <a href="index.html#catalog" data-filter-category="helmets">Helmets</a>
+                                <a href="index.html#catalog" data-filter-category="shoes">Shoes</a>
+                                <a href="index.html#catalog" data-filter-category="accessories">Accessories</a>
+                                <a href="index.html#catalog" data-filter-category="kits">Kits</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-column">
+                            <h4 class="dropdown-title">Featured Gear</h4>
+                            <div class="dropdown-links" data-dropdown-products>
+                                <!-- populated via script -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="index.html#why-us">Why Us</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="profile.html">Profile</a>
+            </nav>
+            <button class="cart-toggle" id="cartToggle" aria-expanded="false" aria-controls="cartPanel">
+                Cart <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="offer-carousel" aria-label="Seasonal offers">
+        <div class="container offer-wrapper">
+            <button class="offer-nav prev" id="offerPrev" aria-label="Previous offer">‹</button>
+            <div class="offer-window">
+                <div class="offer-track" id="offerTrack">
+                    <!-- Offers rendered here -->
+                </div>
+            </div>
+            <button class="offer-nav next" id="offerNext" aria-label="Next offer">›</button>
+        </div>
+    </section>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Your Player Profile</h1>
+                <p>Manage delivery info, track orders, and stay match-ready with personalised updates.</p>
+            </div>
+        </section>
+
+        <section class="profile">
+            <div class="container profile-layout">
+                <aside class="card profile-summary">
+                    <div class="section-header">
+                        <h2>Player Snapshot</h2>
+                        <p>Keep your details updated for a faster checkout experience.</p>
+                    </div>
+                    <div class="profile-summary-content">
+                        <h3 id="profileName">Cricket Enthusiast</h3>
+                        <ul class="profile-meta">
+                            <li>
+                                <span>Email</span>
+                                <strong id="profileEmail">Add your email to stay updated.</strong>
+                            </li>
+                            <li>
+                                <span>Phone</span>
+                                <strong id="profilePhone">Add a phone number for delivery updates.</strong>
+                            </li>
+                        </ul>
+                        <div class="profile-address">
+                            <h4>Default Delivery Address</h4>
+                            <p id="profileAddress">Add your delivery address to speed through checkout.</p>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="card profile-form-card">
+                    <div class="section-header">
+                        <h2>Edit Profile</h2>
+                        <p>One profile for all your orders across Cricket Pro Shop.</p>
+                    </div>
+                    <form id="profileForm" class="input-grid">
+                        <label>
+                            Full Name
+                            <input type="text" name="fullName" placeholder="MS Dhoni">
+                        </label>
+                        <label>
+                            Email
+                            <input type="email" name="email" placeholder="you@example.com">
+                        </label>
+                        <label>
+                            Phone Number
+                            <input type="tel" name="phone" placeholder="+91 98765 43210">
+                        </label>
+                        <label class="full-width">
+                            Street Address
+                            <input type="text" name="address" placeholder="22 Stadium Road">
+                        </label>
+                        <label>
+                            City
+                            <input type="text" name="city" placeholder="Gurugram">
+                        </label>
+                        <label>
+                            State
+                            <input type="text" name="state" placeholder="Haryana">
+                        </label>
+                        <label>
+                            Postal Code
+                            <input type="text" name="postalCode" placeholder="122001">
+                        </label>
+                        <button type="submit" class="btn primary">Save Profile</button>
+                        <p class="form-feedback" id="profileFeedback" hidden>Profile saved successfully.</p>
+                    </form>
+                </div>
+
+                <div class="card profile-orders-card">
+                    <div class="section-header">
+                        <h2>Order History</h2>
+                        <p>Track your past orders and monitor delivery status.</p>
+                    </div>
+                    <p class="empty-state" id="profileOrdersEmpty">No orders yet. Browse the store and start building your kit.</p>
+                    <ul class="profile-order-list" id="profileOrders"></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <aside class="cart-panel" id="cartPanel" aria-hidden="true">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="cart-close" id="cartClose" aria-label="Close cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="cart-empty">Your cart is empty. Add some cricket gear!</p>
+        </div>
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">₹0</span>
+            </div>
+            <button class="btn primary full-width" id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </aside>
+
+    <footer class="site-footer" id="contact">
+        <div class="container footer-grid">
+            <div>
+                <h3>Cricket Pro Shop</h3>
+                <p>Everything you need for the perfect innings. Powered by passion for the game.</p>
+            </div>
+            <div>
+                <h4>Visit Us</h4>
+                <p>22 Stadium Road<br>Gurugram, India</p>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>support@cricketproshop.com<br>+91 98765 43210</p>
+            </div>
+            <div>
+                <h4>Follow</h4>
+                <p>
+                    <a href="#">Instagram</a> ·
+                    <a href="#">YouTube</a> ·
+                    <a href="#">Facebook</a>
+                </p>
+            </div>
+        </div>
+        <p class="footer-note">&copy; <span id="currentYear"></span> Cricket Pro Shop. All rights reserved.</p>
+    </footer>
+
+    <div class="backdrop" id="backdrop" hidden></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
